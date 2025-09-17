@@ -21,6 +21,6 @@ A small client-side web tool (HTML/CSS/JS) that performs **best-effort** checks 
 
 
 ## Check our other resources
-1. [Guest Post Checking Tool](https://mohsinraj.github.io/gps-status-checker/).
+1. [Guest Post Site Status Checker Free online Tool](https://mohsinraj.github.io/gps-status-checker/).
 2. [Get Guest Post Backlinks](https://t-ranks.com/t-post/)
 3. [Get PBNs Backlinks](https://t-ranks.com/buy-pbn-links/)
