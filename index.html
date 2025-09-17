@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Guest Post Site Status Checker</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕸️</text></svg>">
+</head>
+<body>
+<div class="container">
+  <h1>Guest Post Site Status Checker</h1>
+  <p class="lead">Paste one URL per line. The tool will attempt to check whether a site is <strong>alive</strong>, <strong>indexable</strong> (best-effort), and likely to provide <strong>dofollow</strong> links (best-effort).</p>
+
+  <label for="proxy">CORS Proxy (optional):</label>
+  <input id="proxy" value="https://cors-proxy.fortranks564.workers.dev/?url=" />
+
+  <textarea id="urls" placeholder="https://example.com/guest-post-guidelines
+https://another-site.com/write-for-us"></textarea>
+
+  <div class="row">
+    <button id="checkBtn">Run Checks</button>
+    <button id="clearBtn" class="muted">Clear</button>
+    <button id="downloadBtn" class="muted">Download Results (CSV)</button>
+  </div>
+
+  <div id="status" aria-live="polite"></div>
+
+  <table id="results" aria-label="Results table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>URL</th>
+        <th>Alive</th>
+        <th>HTTP</th>
+        <th>Indexed (meta check)</th>
+        <th>Likely Dofollow</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <details>
+    <summary>How this tool works (important)</summary>
+    <ol>
+      <li><strong>Alive:</strong> Performs a fetch to the URL (optionally via a CORS proxy). If fetch succeeds the site is considered reachable.</li>
+      <li><strong>Indexed:</strong> This does a best-effort check in the page markup for <code>&lt;meta name="robots"&gt;</code> or <code>noindex</code>. <em>This is not a definitive Google index check</em> because Google search results are not directly queryable from the browser due to CORS and rate-limits.</li>
+      <li><strong>Dofollow:</strong> Scans anchor tags on the page for <code>rel="nofollow"</code> and scans meta robots for <code>nofollow</code>. If no signals are found, the page is reported as <em>likely dofollow</em>. This is also a best-effort heuristic.</li>
+    </ol>
+    <p>To get full, authoritative index status, run a server-side check calling Google, use an SEO API (Ahrefs/Moz/SEMrush), or check manually with <code>site:example.com "page-url"</code> in Google Search Console or Google.</p>
+  </details>
+
+  <footer>
+    <p>Made with ❤️ — Guest Post Site Status Checker <a href="https://t-ranks.com/t-post/">T-Rank Backlinks Agency</a></p>
+  </footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
